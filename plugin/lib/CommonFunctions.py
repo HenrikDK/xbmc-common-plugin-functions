@@ -433,7 +433,7 @@ def fetchPage(params={}):
         log("connecting to server...", 1)
 
         con = urllib2.urlopen(request)
-        ret_obj["header"] = con.info()
+        ret_obj["header"] = con.info().headers
         ret_obj["new_url"] = con.geturl()
         if get("no-content", "false") == u"false" or get("no-content", "false") == "false":
             inputdata = con.read()
