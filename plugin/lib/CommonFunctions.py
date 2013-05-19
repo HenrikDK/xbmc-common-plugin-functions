@@ -394,7 +394,7 @@ def extractJS(data, function=False, variable=False, match=False, evaluate=False,
 def fetchPage(params={}):
     get = params.get
     link = get("link")
-    ret_obj = {}
+    ret_obj = { "new_url": link}
     if get("post_data"):
         log("called for : " + repr(params['link']))
     else:
@@ -427,6 +427,7 @@ def fetchPage(params={}):
         request.add_header('Cookie', get("cookie"))
 
     if get("refering"):
+        log("Setting refering: " + get("refering"), 3)
         request.add_header('Referer', get("refering"))
 
     try:
