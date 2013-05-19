@@ -320,7 +320,7 @@ def extractJS(data, function=False, variable=False, match=False, evaluate=False,
         if function:
             tmp_lst = re.compile(function + '\(.*?\).*?;', re.M | re.S).findall(script)
         elif variable:
-            tmp_lst = re.compile(variable + '[ ]+=.*?;', re.M | re.S).findall(script)            
+            tmp_lst = re.compile(variable.replace("[", "\[").replace("]", "\]") + '[ ]+=.*?;', re.M | re.S).findall(script)            
         else:
             tmp_lst = [script]
         if len(tmp_lst) > 0:

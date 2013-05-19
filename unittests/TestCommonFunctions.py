@@ -550,14 +550,14 @@ class TestCommonFunctions(BaseTestCase.BaseTestCase):
         print repr(res)
         assert(res == ["testfunct('somedata', 4);"])
 
-    def test_extractJS_should_find_variable(self):
+    def test_extractJS_should_find_complex_variable(self):
         common = CommonFunctions
         common.parseDOM = Mock()
-        common.parseDOM.return_value = ["testfunct('somedata', 4);\n imgsrc = 'source';"]
+        common.parseDOM.return_value = ["var myArray=new Array();\n myArray[0] = 'data';"]
 
-        res = common.extractJS("data", variable="imgsrc")
+        res = common.extractJS("data", variable="myArray[0]")
         print repr(res)
-        assert(res == ["imgsrc = 'source';"])
+        assert(res == ["myArray[0] = 'data';"])
 
     def test_extractJS_should_extract_function_value(self):
         common = CommonFunctions
@@ -585,6 +585,7 @@ class TestCommonFunctions(BaseTestCase.BaseTestCase):
 
         res = common.extractJS("data", variable="imgsrc", values=True)
         print repr(res)
+
         assert(res == ["source"])
 
     def test_extractJS_should_parse_JSON(self):
