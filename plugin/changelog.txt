@@ -1,7 +1,9 @@
+[B]Version 1.5.1[/B]
+- Fixes for fetchPage
+
 [B]Version 1.5.0[/B]
 - Fixed: proper fix for getParameters that only affects Frodo branch
 - Added: new function to get the version of xbmc as a float
-
 
 [B]Version 1.4.0[/B]
 - Special fix for eden branch to unbreak changes for Frodo
