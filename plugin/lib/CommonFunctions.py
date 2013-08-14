@@ -394,7 +394,7 @@ def extractJS(data, function=False, variable=False, match=False, evaluate=False,
 def fetchPage(params={}):
     get = params.get
     link = get("link")
-    ret_obj = { "new_url": link}
+    ret_obj = { "new_url": link, "content": "", "status": 500, "header": ""}
     if get("post_data"):
         log("called for : " + repr(params['link']))
     else:
