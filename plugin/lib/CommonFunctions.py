@@ -440,7 +440,13 @@ def fetchPage(params={}):
             inputdata = con.read()
             #data_type = chardet.detect(inputdata)
             #inputdata = inputdata.decode(data_type["encoding"])
-            ret_obj["content"] = inputdata.decode("utf-8")
+            try:
+                ret_obj["content"] = inputdata.decode("utf-8")                    
+            except:
+                try:
+                    ret_obj["content"] = inputdata.decode("latin-1")                    
+                except:
+                    raise    
 
         con.close()
 
